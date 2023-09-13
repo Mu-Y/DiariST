@@ -13,6 +13,7 @@ setup(
         "whisper",
         "speechbrain",
         "fire",
+        "sacrebleu==2.3.1",
     ],
     entry_points={
         "console_scripts": [
