@@ -3,7 +3,7 @@ This repository maintains the data and code used for the paper "DiariST: Streami
 
 [Read the paper](https://)
 ## Overview
-End-to-end speech translation (ST) for conversation recordings involves several underexplored challenges such as speaker diarization (SD) without accurate word time stamps and handling of overlapping speech in a streaming fashion. Due to the absence of evaluation benchmarks in this area, we develop a new evaluation dataset, **DiariST-AliMeeting**, by translating the reference Chinese transcriptions of the [AliMeeting](https://www.openslr.org/119/) into English. We also propose new metrics, called **Speaker-Agnostic BLEU (SAgBLEU)** and **Speaker-Attributed BLEU (SAtBLEU)**, to measure the ST quality while taking SD accuracy into account. In our paper [DiariST: Streaming Speech Translation with Speaker Diarization](https://), we further proposed the first streaming ST and SD system, named **DiariST**, by integrating [token-level serialized output training](https://arxiv.org/abs/2202.00842) and [t-vector](https://arxiv.org/abs/2203.16685) into [a neural transducer-based streaming ST system](https://arxiv.org/abs/2204.05352). To facilitate the research in this new direction, we release the evaluation data, the offline baseline systems, and the evaluation code, used in the paper.
+End-to-end speech translation (ST) for conversation recordings involves several underexplored challenges such as speaker diarization (SD) without accurate word time stamps and handling of overlapping speech in a streaming fashion. Due to the absence of evaluation benchmarks in this area, we develop a new evaluation dataset, **DiariST-AliMeeting**, by translating the reference Chinese transcriptions of the [AliMeeting](https://www.openslr.org/119/) into English. We also propose new metrics, called **Speaker-Agnostic BLEU (SAgBLEU)** and **Speaker-Attributed BLEU (SAtBLEU)**, to measure the ST quality while taking SD accuracy into account. In our paper [DiariST: Streaming Speech Translation with Speaker Diarization](https://), we further propose the first streaming ST and SD system, named **DiariST**, by integrating [token-level serialized output training](https://arxiv.org/abs/2202.00842) and [t-vector](https://arxiv.org/abs/2203.16685) into [a neural transducer-based streaming ST system](https://arxiv.org/abs/2204.05352). To facilitate the research in this new direction, we release the evaluation data, the offline baseline systems, and the evaluation code, used in the paper.
 
 
 ## Prerequisites
@@ -62,7 +62,7 @@ SAgBLEU: 18.45
 SAtBLEU: 16.81
 ```
 
-Note that SAgBLEU and SAtBLEU are uttearnce-order sensitive, but not time-stamp sensitive. If your speech translation system does not generate precise timestamps, you can simply set dummy timestamps.
+Note that SAgBLEU and SAtBLEU are uttearnce-order sensitive, but not time-stamp sensitive. If your speech translation system does not generate precise timestamps, you can simply set dummy timestamps in the TSV file.
 
 ## License
 |  | License |
