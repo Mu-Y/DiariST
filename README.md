@@ -1,7 +1,9 @@
 # DiariST
-This repository maintains the data and code used for the paper "DiariST: Streaming Speech Translation with Speaker Diarization" (https://)
+This repository maintains the data and code used for the paper "DiariST: Streaming Speech Translation with Speaker Diarization". 
+
+[Read the paper](https://)
 ## Overview
-End-to-end speech translation (ST) for conversation recordings involves several underexplored challenges such as speaker diarization (SD) without accurate word time stamps and handling of overlapping speech in a streaming fashion. Due to the absence of evaluation benchmarks in this area, we develop a new evaluation dataset, DiariST-AliMeeting, by translating the reference Chinese transcriptions of the [AliMeeting](https://www.openslr.org/119/) into English. We also propose new metrics, called speaker-agnostic BLEU and speaker-attributed BLEU, to measure the ST quality while taking SD accuracy into account. In our paper [DiariST: Streaming Speech Translation with Speaker Diarization](https://), we further proposed the first streaming ST and SD system by integrating [token-level serialized output training](https://arxiv.org/abs/2202.00842) and [t-vector](https://arxiv.org/abs/2203.16685) into [a neural transducer-based streaming ST system](https://arxiv.org/abs/2204.05352). To facilitate the research in this new direction, we will release the evaluation data, the offline baseline systems, and the evaluation code, used in the paper.
+End-to-end speech translation (ST) for conversation recordings involves several underexplored challenges such as speaker diarization (SD) without accurate word time stamps and handling of overlapping speech in a streaming fashion. Due to the absence of evaluation benchmarks in this area, we develop a new evaluation dataset, **DiariST-AliMeeting**, by translating the reference Chinese transcriptions of the [AliMeeting](https://www.openslr.org/119/) into English. We also propose new metrics, called **Speaker-Agnostic BLEU (SAgBLEU)** and **Speaker-Attributed BLEU (SAtBLEU)**, to measure the ST quality while taking SD accuracy into account. In our paper [DiariST: Streaming Speech Translation with Speaker Diarization](https://), we further proposed the first streaming ST and SD system, named **DiariST**, by integrating [token-level serialized output training](https://arxiv.org/abs/2202.00842) and [t-vector](https://arxiv.org/abs/2203.16685) into [a neural transducer-based streaming ST system](https://arxiv.org/abs/2204.05352). To facilitate the research in this new direction, we release the evaluation data, the offline baseline systems, and the evaluation code, used in the paper.
 
 
 ## Prerequisites
@@ -15,7 +17,7 @@ cd DiariST
 pip install -e .
 ```
 
-## How to generate data
+## How to generate the Diarist-AliMeeting data
 ```sh
 $ ./run_prepare_data.sh
 ```
@@ -30,7 +32,7 @@ data
              ├── ...
 ```
 
-## How to run baseline system
+## How to run the baseline system
 - Translation --> Diarization
   - Option 1: Run "translation --> diarization" baseline for one audio sample.
   ```sh
@@ -45,12 +47,22 @@ data
 - Diarization --> Translation
   - Please use a command "diarist_baseline_dt" instead of "diarist_baseline_td"
 
-## How to evaluate result
+## How to evaluate the result
+Assuming that reference translations are stored under "./data/DiariST-AliMeeting/IHM-CAT/test/" and the diarized speech translation results are stored under "./result/DiariST-AliMeeting/IHM-CAT/test/" in TSV format, you can compute SAgBLEU and SAtBLEU using the following command.
 ```sh
 $ diarist_eval \
-    --ref-dir ./data/DiariST-AliMeeting/IHM-CAT/test/ \
-    --decoded-dir ./result/DiariST-Ali-Short/IHM-CAT/test/
+    --ref_dir ./data/DiariST-AliMeeting/IHM-CAT/test/ \
+    --hyp_dir ./result/DiariST-AliMeeting/IHM-CAT/test/
 ```
+
+It will compute SAgBLEU and SAtBLEU score as follows. (Note that the number may become slightly different depending on your computational envinronment.)
+```sh
+Found 195 files in result/DiariST-AliMeeting/IHM-CAT/test/
+SAgBLEU: 18.45
+SAtBLEU: 16.81
+```
+
+Note that SAgBLEU and SAtBLEU are uttearnce-order sensitive, but not time-stamp sensitive. If your speech translation system does not generate precise timestamps, you can simply set dummy timestamps.
 
 ## License
 |  | License |
@@ -59,7 +71,7 @@ $ diarist_eval \
 | Anything else | [MIT Licence](LICENSE.txt) |
 
 ## Citation
-Please cite the first paper (yang2023diarist) when you use the code in this repository. If you use DiariST-AliMeeting, please also cite the two papers for AliMeeting corpus (Yu2022M2Met, Yu2022Summary) in addition to the first paper (yang2023diarist).
+Please cite the first paper (yang2023diarist) when you use the code in this repository. If you use the DiariST-AliMeeting test set under data/ directory, please also cite the two papers for AliMeeting corpus (Yu2022M2Met, Yu2022Summary) in addition to the first paper (yang2023diarist).
 ```
 @inproceedings{yang2023diarist,
   title={DiariST: Streaming Speech Translation with Speaker Diarization},

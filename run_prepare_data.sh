@@ -25,12 +25,8 @@ fi
 #
 # Download translation
 #
-# if [ ! -f $RAW_DATA_DIR/AliMeetingTranslation.tar.gz ]; then
-if [ "do " ]; then
-    cd $RAW_DATA_DIR
-    # wget ali_translation 
-    tar -zxvf AliMeetingTranslation.tar.gz
-    cd -
+if [ ! -d $RAW_DATA_DIR/AliMeetingTranslation ]; then
+    bash diarist/data/download_alimeeting_translation.sh $RAW_DATA_DIR
 fi
 
 #
@@ -39,7 +35,7 @@ fi
 for data_type in dev test; do
     if [ ! -f $OUTPUT_DIR/$data_type.json ]; then
         python diarist/data/generate_data_json.py \
-            $RAW_DATA_DIR/AliMeetingTranslation/$data_type.tsv \
+            $RAW_DATA_DIR/AliMeetingTranslation/$data_type.txt \
             diarist/data/$data_type.json \
             > $OUTPUT_DIR/$data_type.json
     fi

@@ -38,12 +38,10 @@ def satbleu(preds, ref_json, delimiter="\t"):
 
     list_len = max(len(ref_spks), len(hyp_spks))
     if list_len > 6:
-        # return None
         print(
             "Num of predicted speakers is larger than 6, evaluating this sample will be slow. "
         )
     perms = list(itertools.permutations(range(list_len)))
-    # corpus_bleus = [0] * len(perms)
     if len(ref_spks) < len(hyp_spks):
         ref_texts = [" ".join(spk_txt) for spk, spk_txt in spk2chunk_ref.items()] + [
             ""
@@ -75,17 +73,16 @@ def evaluate(ref_dir, hyp_dir):
     full_path_list = [
         os.path.join(hyp_dir, f) for f in os.listdir(hyp_dir) if f.endswith(".tsv")
     ]
+    print(f"Found {len(full_path_list)} files in {hyp_dir}")
 
     for eval_method in ["SAgBLEU", "SAtBLEU"]:
         dir_scores = {
-            "avg_sentence_bleu": 0.0,
-            "avg_semi_corpus_bleu": 0.0,
             "details": {},
         }
 
         total_hyps, total_refs = [], []
         for dname in full_path_list:
-            # assume parallel dir structure, search for ref file in `in_dir`
+            # assume parallel dir structure, search for ref file in `ref_dir`
 
             just_name = os.path.splitext(os.path.basename(dname))[0]
             ref_json_path = os.path.join(ref_dir, f"{just_name}.json")
