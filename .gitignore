@@ -1,0 +1,10 @@
+__pycache__
+*.py[cod]
+*$py.class
+*.egg-info
+.pytest_cache
+.idea
+.tsv
+.json
+.wav
+pretrained_models
