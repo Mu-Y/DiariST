@@ -8,10 +8,11 @@ End-to-end speech translation (ST) for conversation recordings involves several 
 
 ## Prerequisites
 - Linux
-  - python3
+  - python 3.9
 
 ## Installation
 ```sh
+pip install git+https://github.com/openai/whisper.git
 git clone https://github.com/Mu-Y/DiariST.git
 cd DiariST
 pip install -e .

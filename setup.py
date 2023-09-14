@@ -10,7 +10,6 @@ setup(
         "torchaudio",
         "Cython",
         "nemo_toolkit[all]",
-        "whisper",
         "speechbrain",
         "fire",
         "sacrebleu==2.3.1",
