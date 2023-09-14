@@ -124,7 +124,7 @@ def diarize_and_translate_main(
     window_shift=0.6,
     apply_VAD=True,
     rank=0,
-    world_size=8,
+    world_size=1,
 ):
     """main"""
 

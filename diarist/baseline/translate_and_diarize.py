@@ -74,7 +74,7 @@ def translate_and_diarize_main(
     max_num_speakers=6,
     min_dur=0.8,
     rank=0,
-    world_size=8,
+    world_size=1,
 ):
     """main"""
     torch.manual_seed(777)
