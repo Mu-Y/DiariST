@@ -56,7 +56,7 @@ $ diarist_eval \
     --hyp_dir ./result/DiariST-AliMeeting/IHM-CAT/test/
 ```
 
-It will compute SAgBLEU and SAtBLEU score as follows. (Note that the number may become slightly different depending on your computational envinronment.)
+It will compute SAgBLEU and SAtBLEU score as follows. (Note: Our results in the paper were obtained using the Tesla V100 with 16GB of memory. The results may vary depending on the computational environment.)
 ```sh
 Found 195 files in result/DiariST-AliMeeting/IHM-CAT/test/
 SAgBLEU: 18.45
