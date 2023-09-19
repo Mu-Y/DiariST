@@ -74,10 +74,10 @@ Note that SAgBLEU and SAtBLEU are uttearnce-order sensitive, but not time-stamp 
 ## Citation
 Please cite the first paper (yang2023diarist) when you use the code in this repository. If you use the DiariST-AliMeeting test set under data/ directory, please also cite the two papers for AliMeeting corpus (Yu2022M2Met, Yu2022Summary) in addition to the first paper (yang2023diarist).
 ```
-@inproceedings{yang2023diarist,
-  title={DiariST: Streaming Speech Translation with Speaker Diarization},
+@article{yang2023diarist,
+  title={{DiariST}: Streaming Speech Translation with Speaker Diarization},
   author={Yang, Mu and Kanda, Naoyuki and Wang, Xiaofei and Chen, Junkun and Wang, Peidong and Xue, Jian and Li, Jinyu and Yoshioka, Takuya},
-  booktitle={arXiv preprint},
+  journal={arXiv preprint arXiv:2309.08007},
   year={2023}
 }
 
